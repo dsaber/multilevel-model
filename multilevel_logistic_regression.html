@@ -11794,7 +11794,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">make_dataframe</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
@@ -11822,7 +11822,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -11836,7 +11836,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -11893,7 +11893,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;treated&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -11907,7 +11907,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -16735,7 +16735,7 @@ rkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="nd">@pymc.stochastic</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -16749,18 +16749,15 @@ rkJggg==
 <span class="n">a</span> <span class="o">=</span> <span class="n">hyperpriors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">hyperpriors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-<span class="c1"># This is what we don&#39;t know, but would like to find out</span>
-<span class="n">true_rates</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">Beta</span><span class="p">(</span><span class="s1">&#39;true_rates&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">rates</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">Beta</span><span class="p">(</span><span class="s1">&#39;rates&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
-<span class="c1"># This is what we observed</span>
 <span class="n">trials</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">successes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span>
-<span class="n">observed_values</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">Binomial</span><span class="p">(</span><span class="s1">&#39;observed_values&#39;</span><span class="p">,</span> <span class="n">trials</span><span class="p">,</span> <span class="n">true_rates</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">successes</span><span class="p">)</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">Binomial</span><span class="p">(</span><span class="s1">&#39;observed_values&#39;</span><span class="p">,</span> <span class="n">trials</span><span class="p">,</span> <span class="n">rates</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">successes</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">Model</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">true_rates</span><span class="p">,</span> <span class="n">observed_values</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">Model</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rates</span><span class="p">,</span> <span class="n">obs</span><span class="p">])</span>
 <span class="n">mcmc3</span> <span class="o">=</span> <span class="n">pymc</span><span class="o">.</span><span class="n">MCMC</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
-<span class="c1"># Generate 1M samples, and throw out the first 500k</span>
 <span class="n">mcmc3</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">)</span>
 </pre></div>
 
@@ -16774,7 +16771,7 @@ rkJggg==
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre> [-----------------100%-----------------] 100000 of 100000 complete in 12.1 sec</pre>
+<pre> [-----------------100%-----------------] 100000 of 100000 complete in 12.2 sec</pre>
 </div>
 </div>
 
@@ -16784,10 +16781,10 @@ rkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">true_rates</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">rates</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -16801,24 +16798,24 @@ rkJggg==
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-true_rates:
+rates:
  
 	Mean             SD               MC Error        95% HPD interval
 	------------------------------------------------------------------
-	0.325            0.051            0.005            [ 0.222  0.419]
-	0.498            0.052            0.001            [ 0.396  0.599]
-	0.541            0.053            0.002            [ 0.444  0.647]
-	0.582            0.054            0.001            [ 0.478  0.69 ]
+	0.32             0.048            0.001            [ 0.231  0.417]
+	0.499            0.048            0.001            [ 0.404  0.59 ]
+	0.543            0.048            0.001            [ 0.443  0.633]
+	0.587            0.048            0.001            [ 0.494  0.682]
 	
 	
 	Posterior quantiles:
 	
 	2.5             25              50              75             97.5
 	 |---------------|===============|===============|---------------|
-	0.227            0.292           0.324          0.357         0.424
-	0.396            0.462           0.498          0.533         0.599
-	0.439            0.505           0.541          0.577         0.643
-	0.475            0.545           0.582          0.62          0.688
+	0.232            0.287           0.318          0.351         0.418
+	0.406            0.467           0.499          0.532         0.593
+	0.447            0.511           0.543          0.575         0.639
+	0.493            0.554           0.587          0.619         0.682
 	
 </pre>
 </div>
